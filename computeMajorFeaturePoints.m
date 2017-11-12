@@ -7,14 +7,14 @@ mi = 1;
 mfp = [];
 for i=1:size(refPoints,1)
     
-    refx = refPoints(i,1);
-    refy = refPoints(i,2);
+    refx = refPoints(i,2);
+    refy = refPoints(i,1);
     
     count=0;
     
     for j=1:10
         if(j~=ex)
-            count = count + nearFeaturePoints(refx,refy,ploc{j},7);
+            count = count + nearFeaturePoints(refx,refy,ploc{j},11);
         end
     end
     
@@ -23,6 +23,5 @@ for i=1:size(refPoints,1)
         mi = mi+1;
     end
        
-    
 end
 end

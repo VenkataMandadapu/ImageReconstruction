@@ -42,5 +42,5 @@ for i=1:Imcount
     I = imshow(Img(:,:,:,i));
     hold on;
     scatter(MFP(:,1),MFP(:,2),'g+');
-    saveas(gcf,['set1_',int2str(i+1),'_mfp.jpg']); 
+    saveas(gcf,['set1_',int2str(i+1),'_mfp.jpg']);
 end
