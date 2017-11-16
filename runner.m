@@ -25,7 +25,7 @@ clear all;
 Imcount = 10;
 pl{Imcount,1} = [];
 for i=1:Imcount
-    filename = ['set1_',int2str(i+1),'_roi.jpg'];
+    filename = ['/Users/venkatamandadapu/CVProj/code/images/set1_',int2str(i+1),'_roi.jpg'];
     Img(:,:,:,i) = imread(filename);
     gIm(:,:,i) = rgb2gray(Img(:,:,:,i));
     fp = detectHarrisFeatures(gIm(:,:,i));
@@ -34,13 +34,15 @@ for i=1:Imcount
 end
 
 for i=1:Imcount
-    mfp{i} = computeMajorFeaturePoints(pl,i);
+    [mfp{i},nmfp{i}] = computeMajorFeaturePoints(pl,i);
 end
 
-for i=1:Imcount
-    MFP = mfp{i};
-    I = imshow(Img(:,:,:,i));
-    hold on;
-    scatter(MFP(:,1),MFP(:,2),'g+');
-    saveas(gcf,['set1_',int2str(i+1),'_mfp.jpg']);
-end
+% for i=1:Imcount
+%     MFP = mfp{i};
+%     I = imshow(Img(:,:,:,i));
+%     hold on;
+%     scatter(MFP(:,1),MFP(:,2),'g+');
+%     saveas(gcf,['set1_',int2str(i+1),'_mfp.jpg']);
+% end
+
+[mfpmaxsize,mfpmaxindex] = max(cellfun('size', mfp, 1));
