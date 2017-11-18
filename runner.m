@@ -25,7 +25,7 @@ clear all;
 Imcount = 10;
 pl{Imcount,1} = [];
 for i=1:Imcount
-    filename = ['/home/dhanvi/Documents/AU-17/CV/PROJECT/set1_',int2str(i+1),'_roi.jpg'];
+    filename = ['/Users/venkatamandadapu/CVProj/code/images/set1_',int2str(i+1),'_roi.jpg'];
     Img(:,:,:,i) = imread(filename);
     gIm(:,:,i) = rgb2gray(Img(:,:,:,i));
     fp = detectHarrisFeatures(gIm(:,:,i));
@@ -47,7 +47,7 @@ end
 
 [mfpmaxsize,mfpmaxindex] = max(cellfun('size', mfp, 1));
 
-globalMatrix = zeros(size(Img(:,:,:,1)));
+globalMatrix = zeros(size(Img(:,:,1)));
 
 for i = 1:Imcount
     MFP = mfp{i};
@@ -60,3 +60,7 @@ end
 
 %NOTE : When checking for presence of 1 or 0 in the globalMatrix, always
 %round the (x,y) coordinates to the nearest integer value first.
+
+[max_size, max_index] = max(cellfun('size', mfp, 1));
+rim = reconstructimage(gIm,mfp,nmfp,globalMatrix,max_index);
+imshow(rim);
