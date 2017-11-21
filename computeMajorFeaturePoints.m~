@@ -7,7 +7,7 @@ mi = 1;
 nmi = 1;
 mfp = [];
 nmfp = [];
-window = 31;
+window = 51;
 for i=1:size(refPoints,1)
     
     refx = refPoints(i,2);

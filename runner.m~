@@ -72,4 +72,15 @@ end
 rim = gIm(:,:,max_index);
 rim = reconstructimage(gIm,mfp,nmfp,globalMatrix,max_index,rim);
 
+for i=1:Imcount
+    if(i~=max_index)
+       fp = detectHarrisFeatures(gIm(:,:,i));
+    [features,points] = extractFeatures(gIm(:,:,i),fp);
+    pl{i} = points.Location;
+       rim = reconstructimage(gIm,mfp,nmfp,globalMatrix,i,rim);
+       imshow(rim);
+       pause;
+    end
+end
+
 imshow(rim);
