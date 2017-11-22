@@ -25,7 +25,7 @@
 %% Experiment with feature point selection
 
 clear all;
-Imcount = 18;
+Imcount = 9;
 pl{Imcount,1} = [];
 for i=1:Imcount
     filename = ['/home/dhanvi/Documents/AU-17/CV/PROJECT/images/set2/set2_',int2str(i),'_roi.jpg'];
@@ -37,7 +37,7 @@ for i=1:Imcount
 end
 
 for i=1:Imcount
-    [mfp{i},nmfp{i}] = computeMajorFeaturePoints(pl,i);
+    [mfp{i},nmfp{i}] = computeMajorFeaturePoints(pl,i,Imcount);
 end
 
 % for i=1:Imcount
@@ -69,7 +69,7 @@ end
 % imshow(rim);
 
 [max_size, max_index] = max(cellfun('size', mfp, 1));
-rim = gIm(:,:,max_index);
-rim = reconstructimage(gIm,mfp,nmfp,globalMatrix,max_index,rim);
+%rim = gIm(:,:,max_index);
+rim = reconstructimage(gIm,mfp,nmfp,globalMatrix,max_index);
 
 imshow(rim);

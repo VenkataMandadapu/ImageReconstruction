@@ -1,4 +1,4 @@
-function [mfp,nmfp] = computeMajorFeaturePoints(ploc,ex)
+function [mfp,nmfp] = computeMajorFeaturePoints(ploc,ex,Imcount)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -7,7 +7,7 @@ mi = 1;
 nmi = 1;
 mfp = [];
 nmfp = [];
-window = 31;
+window = 19;
 for i=1:size(refPoints,1)
     
     refx = refPoints(i,2);
@@ -15,7 +15,7 @@ for i=1:size(refPoints,1)
     
     count=0;
     
-    for j=1:10
+    for j=1:Imcount
         if(j~=ex)
             count = count + nearFeaturePoints(refx,refy,ploc{j},window);
         end
